@@ -1,0 +1,113 @@
+Question 1:  secret code
+
+#secret_code.py
+# a program that changes a sentence that the user has entered
+# the user types a sentence
+# the porgram then ask for THREE pairs of letters to change or swap out
+# the letter befpore the comma should be the original letter.
+# The letter after the comma should be the new letter that replaces the origianl one.
+# three sets of letters shold be requested
+# the program then displays the sentence that results from swapping those 3 letter pairs.
+
+# input - a random sentence from the user
+# output - the same sentence with a letters chosen by the user changed (3 letters must be changed)
+
+def main(): # defining the main funtion
+    print("Welcome! This is a program that will change any letters of your choosing in the sentence you decide to enter!")
+    # welcome message to tell user what the program does
+    sentence = input("Please enter the sentence you want to use: ") # asking user to enter a sentence and storing it in "sentence"
+
+    for i in range(3): # loop when you know the definitive amount of times it needs to be run (in this case 3)
+        original, new = input("Please enter a letter in your sentence you would like to change and a new letter to change it to. (making sure to separate the letters by a comma): ").split(",")
+        # asking the user to input the old letter and the new one they want to replace it with ot create the new sentence.
+        sentence = sentence.replace(original, new) # replacing the original letters by the new letters
+
+    print("The new sentence you have created by switching out these letters is: ") # goodbye message
+    print(sentence) # new sentence
+
+main() # closing function
+
+Question 2: reading
+
+#reading.py
+# a program to read a list of word (each line) and in a new file on each line print the following:
+# print the original word
+# print "contains"
+# print the numbr of letters the word has
+# this should be done for all lines
+# both files should be closed
+
+#input - reading words in another file
+# output - printing the original word with "contains" and the number of letters the word has.
+
+
+def main(): #defining the main function
+    letters = 0 # starting letters counter at 0
+
+    infileName = input("What is the name of the file you would like to be opened? ") # asking for the user to name file they created
+    outfileName = input("What is the name of the new file you would like to be created? ") # asking for the user to name file they WANT to be created
+
+    infile = open(infileName, "r") # open file and read the content
+    savefile = open(outfileName, "w") # #creates the new output file
+
+    for line in infile: # for each line in the input file
+        letters += len(line) # add the length of the word on the line to the letters counter
+        message = (line, "contains", letters, "letters\n")  # the new formatted message
+        savefile.write(message)  # save this message in the new file with the word "contains" and the number of letters in each line
+
+    infile.close() #close the infile
+    savefile.close() #close the new file
+
+    print("\n A new file", outfileName, "has been created containing the words with the letter count. ")
+    # print message that will appear on the screen with the outfile name and a message stating it has the letter count.
+
+main()
+
+
+Question 5 : names
+
+#names.py
+# a program to sort names into 3 lists: short, medium and long
+# a short name  is 4 characters or less
+# a  medium name is between 5 and 8 characters
+# a long name is more than 8 characters long
+# program then loops through the original list of 6 names that were collected.
+# based on the number of letters in the name, the name is added to one of the other three lists
+# eg. the name josé would be added to the list with shorter names
+# after names are added ot the three corresponding lists, the 3 lists are printed out
+
+# input - 6 NAMES inputed by user
+# output - names are sorted into 3 lists: short, medium and long
+
+def sort(Firstnames): # defining the sort function
+    short = [] # naming empty list for short names
+    medium= [] # naming empty list for medium names
+    long = [] # naming empty list for long names
+
+    for names in Firstnames: #loop to determine the length of each name
+        if len(names) <= 4: # if length of name is smaller or equal to 4
+            short.append(names) # add it to the short names list
+
+        elif 5 <= len(names) <= 8: # if length of name is between  bigger than or equal to 5 and smaller than or equal to 8
+            medium.append(names) # add it to the medium names list
+
+        else: # if it is none of the other options
+            long.append(names)  # add it to the long names list
+
+    return short, medium, long # to return the codes to the corresponding lists (otherwise nothing will be stored)
+
+def main(): #defining main function
+    Firstnames = [] #naming the empty list Firstnames
+    for i in range(6): # loop with a known number of entries (in this case 6)
+        names = input("Please enter a random name of your choosing: ") # a message for user to imput a random name of their choosing
+        Firstnames.append(names) # adding the names to the list firstnames
+
+    short, medium, long = sort(Firstnames) # to sort the names into the corresponding lists
+
+    print("From the list provided by the user, the short names that were entered are :", short) #message printed for list short names
+    print("From the list provided by the user, the medium names that were entered are: ", medium)#message printed for list short names
+    print("From the list provided by the user, the Long names that were entered are:", long) #message printed for list short names
+
+main()
+
+
