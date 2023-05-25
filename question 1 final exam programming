@@ -1,0 +1,14 @@
+def main(): # defining the main funtion
+    print("Welcome! This is a program that will change any letters of your choosing in the sentence you decide to enter!")
+    # welcome message to tell user what the program does
+    sentence = input("Please enter the sentence you want to use: ") # asking user to enter a sentence and storing it in "sentence"
+
+    for i in range(3): # loop when you know the definitive amount of times it needs to be run (in this case 3)
+        original, new = input("Please enter a letter in your sentence you would like to change and a new letter to change it to. (making sure to separate the letters by a comma): ").split(",")
+        # asking the user to input the old letter and the new one they want to replace it with ot create the new sentence.
+        sentence = sentence.replace(original, new) # replacing the original letters by the new letters
+
+    print("The new sentence you have created by switching out these letters is: ") # goodbye message
+    print(sentence) # new sentence
+
+main() # closing function
